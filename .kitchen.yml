@@ -15,3 +15,16 @@ suites:
     run_list:
       - recipe[cassandra::default]
     attributes:
+  - name: ring
+    run_list:
+      - recipe[cassandra::default]
+    attributes: {
+      "cassandra": {
+        "ring": {
+          "is_enabled": true,
+          "seed": false,
+          "size": 6,
+          "node_position": 2
+         }
+       }
+    }
