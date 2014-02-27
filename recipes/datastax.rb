@@ -20,6 +20,10 @@
 # This recipe relies on a PPA package and is Ubuntu/Debian specific. Please
 # keep this in mind.
 
+node.override['java']['install_flavor'] = 'oracle'
+node.override['java']['jdk_version'] = 7
+node.override['java']['oracle']['accept_oracle_download_terms'] = true
+
 include_recipe "java"
 
 user node.cassandra.user do

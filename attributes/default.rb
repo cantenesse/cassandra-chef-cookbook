@@ -1,7 +1,7 @@
 default[:cassandra] = {
   :cluster_name => "Test Cluster",
   :initial_token => "",
-  :version => '2.0.5',
+  :version => '1.2.15',
   :user => "cassandra",
   :jvm  => {
     :xms => 32,
@@ -74,4 +74,11 @@ default[:cassandra][:opscenter][:agent] = {
   :server_host => nil, # if nil, will use search to get IP by server role
   :server_role => "opscenter_server",
   :use_ssl => true
+}
+
+default[:cassandra][:ring] = {
+  :is_enable => false,
+  :seed => false,
+  :size => 1,
+  :node_position => 1
 }
