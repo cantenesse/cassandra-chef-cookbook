@@ -4,6 +4,7 @@ class Chef::Recipe
       token = calculate_token(ring_position, ring_size)
     else
       token = ''
+    end
     return token
   end
 end
