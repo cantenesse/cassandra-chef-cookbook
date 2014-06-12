@@ -3,6 +3,7 @@ default[:cassandra] = {
   :initial_token => "",
   :version => '2.0.5',
   :user => "cassandra",
+  :public_repo => "enabled",
   :jvm  => {
     :xms => 32,
     :xmx => 512

@@ -89,15 +89,17 @@ when "debian"
   end
 
 when "rhel"
-  include_recipe "yum"
 
-  yum_repository "datastax" do
-    description "DataStax Repo for Apache Cassandra"
-    baseurl "http://rpm.datastax.com/community"
-    gpgcheck false
-    action :create
+  if node[:cassandra][:public_repo] == 'enabled' then
+    include_recipe "yum"
+  
+    yum_repository "datastax" do
+      description "DataStax Repo for Apache Cassandra"
+      baseurl "http://rpm.datastax.com/community"
+      gpgcheck false
+      action :create
+    end
   end
-
 end
 
 package "#{node[:cassandra][:package_name]}" do

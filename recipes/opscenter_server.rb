@@ -28,13 +28,16 @@ when "debian"
   end
 
 when "rhel"
-  include_recipe "yum"
 
-  yum_repository "datastax" do
-    repo_name "datastax"
-    description "DataStax Repo for Apache Cassandra"
-    url "http://rpm.datastax.com/community"
-    action :add
+  if node[:cassandra][:public_repo] == 'enabled' then
+    include_recipe "yum"
+  
+    yum_repository "datastax" do
+      repo_name "datastax"
+      description "DataStax Repo for Apache Cassandra"
+      url "http://rpm.datastax.com/community"
+      action :add
+    end
   end
 end
 package "#{node[:cassandra][:opscenter][:server][:package_name]}" do
